@@ -1,96 +1,91 @@
-var first;
-var second;
-var result;
+var first = null;
+var second = null;
+var bufferFirst = "";
+var bufferSecond = "";
+var selector = null;
+var result = null;
 
-var add = function(number1, number2){
-  $("plus").click(function() {
-    if (lastNumber != null) {
-      return lastNumber + nextNumber;
-    } else {
-
-    }
-  return ;
-}
-var subtract = function(number1, number2){
-  return number1 - number2;
-}
-var multiply = function(number1, number2){
-  return number1 * number2;
-}
-var divide = function(number1, number2){
-  return number1 / number2;
-}
-var promptFunction = function(){
-  var returnThisOne = prompt("Enter a number");
-  return returnThisOne;
-}
-var promptFunction2 = function(){
-  var returnThisToo= prompt("Enter another number");
-  return returnThisToo;
-}
 //This function is used to check if either first or second variables are empty
-  var checker = function(checkMe){
+  var checkMe = function(check){
     if(first === null & second === null){
-      addToFirst(checkMe);
-    } else if(first != & second ===null){
-      addToSecond(checkMe);
+    append(check, bufferFirst);
+      console.log(1);
+    } else if(first !=null & second ===null){
+      append(check, bufferSecond);
+      console.log(2);
     } else if(first === null & second != null){
-      addToFirst(checkMe);
+      append(check, bufferFirst);
+      console.log(3);
     } else {
+      console.log(4);
     }
   }
-  var addToFirst = function(input) {
-    return first + input;
-  }
-
-  var addToSecond = function(input){
-    return second + input;
+  //appends to a var
+  var append = function(input, variable) {
+    variable =+input;
   }
 
 $(function(){
-    $("1").click(function() {
+    $("#one").click(function() {
       checkMe("1");
     });
-    $("2").click(function() {
+    $("#two").click(function() {
       checkMe("2");
     });
-    $("3").click(function() {
+    $("#three").click(function() {
       checkMe("3");
     });
-    $("4").click(function() {
+    $("#four").click(function() {
       checkMe("4");
     });
-    $("5").click(function() {
+    $("#five").click(function() {
       checkMe("5");
     });
-    $("6").click(function() {
+    $("#six").click(function() {
       checkMe("6");
     });
-    $("7").click(function() {
+    $("#seven").click(function() {
       checkMe("7");
     });
-    $("8").click(function() {
+    $("#eight").click(function() {
       checkMe("8");
     });
-    $("9").click(function() {
+    $("#nine").click(function() {
       checkMe("9");
     });
-    $("0").click(function() {
+    $("#zero").click(function() {
       checkMe("0");
     });
-    $("left-paran").click(function() {
+    $("#left-paran").click(function() {
       checkMe("(");
     });
-    $("right-paran").click(function() {
+    $("#right-paran").click(function() {
       checkMe(")");
     });
-    $("=").onclick(function() {
-      alert("TESTING");
+    $("#equal").click(function() {
+      second=bufferSecond;
+      selector(select, first, second);
     });
-
-
+    $("#headerdisplay").click(function(){
+      $("#headerdisplay").append(first);
+    });
 });
 
+
+
+
+
+
+
+
+
+// var promptFunction = function(){
+//   var returnThisOne = prompt("Enter a number");
+//   return returnThisOne;
+// }
+// var promptFunction2 = function(){
+//   var returnThisToo= prompt("Enter another number");
+//   return returnThisToo;
 
 // var number1 = promptFunction();
 // var number2 = promptFunction2();
