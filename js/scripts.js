@@ -39,15 +39,15 @@ var calculateTwoValueResult = function() {
 //selector input used to determine what mathematical method to use
 var selectorFunction = function(input){
   if(input == 1){
-    return RadFunction(first);
+    return exponentialFunction(first,second);
   } else if(input == 2){
-    return factorialFunction(first);
+    return factorialFunction(first,second);
   } else if(input == 3){
-    return sin(first);
+    return sin(first,second);
   } else if(input == 4){
-    return cos(first);
+    return cos(first,second);
   } else if(input == 5){
-    return tan(first);
+    return tan(first,second);
   } else if(input == 6){
     return add(first,second);
   } else if(input == 7){
@@ -97,7 +97,7 @@ $(function(){
     $("#right-paran").click(function() {
       addToBuffer(")");
     });
-    $("#rad").click(function() {
+    $("#xy").click(function() {
       selector = 1;
       switchToSecond();
     });
@@ -133,6 +133,11 @@ $(function(){
       switchToSecond();
       selector = 9;
     });
+    $("#AC").click(function(){
+      first = null;
+      second = null;
+      buffer = "";
+    });
     $("#equal").click(function() {
       var result = calculateTwoValueResult();
       alert(result);
@@ -150,15 +155,15 @@ var exponentialFunction = function(x, y){
   Math.pow(x,y);
 }
 //finds sin of a ratio
-var sinFunction = function(first){
+var sinFunction = function(first,second){
   return Math.sin(first);
 }
 //Finds cos of a ratio
-var cosFunction = function(first){
+var cosFunction = function(first,second){
   return Math.cos(first);
 }
 //Finds tangent of ratio
-var tanFunction = function(first){
+var tanFunction = function(first,second){
   return Math.tan(first);
 }
 //Finds percentage of second to first
@@ -166,7 +171,7 @@ var percentFunction = function(first, second){
   return (second/first)*100;
 }
 //Converts degrees to radians
-var radFunction = function(first){
+var radFunction = function(first,second){
   return Math.radians(first);
 }
 var add = function(first,second){
