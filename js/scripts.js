@@ -149,10 +149,15 @@ var factorialFunction = function(aNumber) {
   for(var i = 1; i <= aNumber; i++){
     output = output*i;
   }
+  return output;
 }
 //Finds x^y
 var exponentialFunction = function(x, y){
-  Math.pow(x,y);
+  var result = 1;
+  for(var i = 1; i <= y; i ++){
+    result = result*x;
+  }
+  return result;
 }
 //finds sin of a ratio
 var sinFunction = function(first,second){
