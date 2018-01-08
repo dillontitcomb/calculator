@@ -20,7 +20,6 @@ var appendBuffer = function(appendedNum) {
 var addToBuffer = function(num){
   appendBuffer(num);
 }
-
 var switchToSecond = function() {
   if (firstInProgress) {
     firstInProgress = false;
@@ -28,18 +27,15 @@ var switchToSecond = function() {
     buffer = "";
   }
 }
-
 var calculateTwoValueResult = function() {
   second = parseFloat(buffer);
   buffer = "";
   firstInProgress = true;
-  console.log(selector);
   return selectorFunction(selector);
   first = 0;
   second = 0;
   buffer = "";
 }
-
 //selector input used to determine what mathematical method to use
 var selectorFunction = function(input){
   if(input == 1){
@@ -103,56 +99,45 @@ $(function(){
     });
     $("#rad").click(function() {
       selector = 1;
-      alert(selector);
       switchToSecond();
     });
     $("#factorial").click(function() {
       switchToSecond();
       selector = 2;
-      alert(selector);
     });
     $("#sin").click(function() {
       switchToSecond();
       selector = 3;
-      alert(selector);
     });
     $("#cos").click(function() {
       switchToSecond();
       selector = 4;
-      alert(selector);
     });
     $("#tan").click(function() {
       switchToSecond();
       selector = 5;
-      alert(selector);
     });
     $("#plus").click(function() {
       switchToSecond();
       selector = 6;
-      alert(selector);
     });
     $("#minus").click(function() {
       switchToSecond();
       selector = 7;
-      alert(selector);
     });
     $("#multiply").click(function() {
       switchToSecond();
       selector = 8;
-      alert(selector);
     });
     $("#divide").click(function() {
       switchToSecond();
       selector = 9;
-      alert(selector);
     });
     $("#equal").click(function() {
       var result = calculateTwoValueResult();
       alert(result);
     });
 });
-
-
 //Finds the factorial of an integer
 var factorialFunction = function(aNumber) {
   var output = 1;
