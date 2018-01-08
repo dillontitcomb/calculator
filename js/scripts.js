@@ -1,95 +1,198 @@
-var first = null;
-var second = null;
-var bufferFirst = "";
-var bufferSecond = "";
-var selector = null;
+var first = 0;
+var second = 0;
+var buffer = "";
+// var bufferSecond = "";
 var result = null;
+var selector = null;
 
+var firstInProgress = true;
+
+//appending button pressed to buffer
+var appendBuffer = function(appendedNum) {
+  buffer+=appendedNum;
+  console.log(buffer);
+}
+//appending button pressed to bufferSecond
+// var appendSecond = function(addMeTo) {
+//   bufferSecond+=addMeTo;
+// }
 //This function is used to check if either first or second variables are empty
-  var checkMe = function(check){
-    if(first === null & second === null){
-    append(check, bufferFirst);
-      console.log(1);
-    } else if(first !=null & second ===null){
-      append(check, bufferSecond);
-      console.log(2);
-    } else if(first === null & second != null){
-      append(check, bufferFirst);
-      console.log(3);
-    } else {
-      console.log(4);
-    }
-  }
-  //appends to a var
-  var append = function(input, variable) {
-    variable =+input;
-  }
+var addToBuffer = function(num){
+  appendBuffer(num);
+}
 
+var switchToSecond = function() {
+  if (firstInProgress) {
+    firstInProgress = false;
+    first = parseFloat(buffer);
+    buffer = "";
+  }
+}
+
+var calculateTwoValueResult = function() {
+  second = parseFloat(buffer);
+  buffer = "";
+  firstInProgress = true;
+  console.log(selector);
+  return selectorFunction(selector);
+  first = 0;
+  second = 0;
+  buffer = "";
+}
+
+//selector input used to determine what mathematical method to use
+var selectorFunction = function(input){
+  if(input == 1){
+    return RadFunction(first);
+  } else if(input == 2){
+    return factorialFunction(first);
+  } else if(input == 3){
+    return sin(first);
+  } else if(input == 4){
+    return cos(first);
+  } else if(input == 5){
+    return tan(first);
+  } else if(input == 6){
+    return add(first,second);
+  } else if(input == 7){
+    return subtract(first,second);
+  } else if(input == 8){
+    return multiply(first,second);
+  } else if(input == 9){
+    return divide(first,second);
+  } else {
+    return 1;
+  }
+}
 $(function(){
     $("#one").click(function() {
-      checkMe("1");
+      addToBuffer("1");
     });
     $("#two").click(function() {
-      checkMe("2");
+      addToBuffer("2");
     });
     $("#three").click(function() {
-      checkMe("3");
+      addToBuffer("3");
     });
     $("#four").click(function() {
-      checkMe("4");
+      addToBuffer("4");
     });
     $("#five").click(function() {
-      checkMe("5");
+      addToBuffer("5");
     });
     $("#six").click(function() {
-      checkMe("6");
+      addToBuffer("6");
     });
     $("#seven").click(function() {
-      checkMe("7");
+      addToBuffer("7");
     });
     $("#eight").click(function() {
-      checkMe("8");
+      addToBuffer("8");
     });
     $("#nine").click(function() {
-      checkMe("9");
+      addToBuffer("9");
     });
     $("#zero").click(function() {
-      checkMe("0");
+      addToBuffer("0");
     });
     $("#left-paran").click(function() {
-      checkMe("(");
+      addToBuffer("(");
     });
     $("#right-paran").click(function() {
-      checkMe(")");
+      addToBuffer(")");
+    });
+    $("#rad").click(function() {
+      selector = 1;
+      alert(selector);
+      switchToSecond();
+    });
+    $("#factorial").click(function() {
+      switchToSecond();
+      selector = 2;
+      alert(selector);
+    });
+    $("#sin").click(function() {
+      switchToSecond();
+      selector = 3;
+      alert(selector);
+    });
+    $("#cos").click(function() {
+      switchToSecond();
+      selector = 4;
+      alert(selector);
+    });
+    $("#tan").click(function() {
+      switchToSecond();
+      selector = 5;
+      alert(selector);
+    });
+    $("#plus").click(function() {
+      switchToSecond();
+      selector = 6;
+      alert(selector);
+    });
+    $("#minus").click(function() {
+      switchToSecond();
+      selector = 7;
+      alert(selector);
+    });
+    $("#multiply").click(function() {
+      switchToSecond();
+      selector = 8;
+      alert(selector);
+    });
+    $("#divide").click(function() {
+      switchToSecond();
+      selector = 9;
+      alert(selector);
     });
     $("#equal").click(function() {
-      second=bufferSecond;
-      selector(select, first, second);
-    });
-    $("#headerdisplay").click(function(){
-      $("#headerdisplay").append(first);
+      var result = calculateTwoValueResult();
+      alert(result);
     });
 });
 
 
-
-
-
-
-
-
-
-// var promptFunction = function(){
-//   var returnThisOne = prompt("Enter a number");
-//   return returnThisOne;
-// }
-// var promptFunction2 = function(){
-//   var returnThisToo= prompt("Enter another number");
-//   return returnThisToo;
-
-// var number1 = promptFunction();
-// var number2 = promptFunction2();
-// alert("Your two numbers add = " + add(parseFloat(number1), parseFloat(number2)));
-// alert("Your two numbers add = " + subtract(parseFloat(number1), parseFloat(number2)));
-// alert("Your two numbers add = " + multiply(parseFloat(number1), parseFloat(number2)));
-// alert("Your two numbers add = " + divide(parseFloat(number1), parseFloat(number2)));
+//Finds the factorial of an integer
+var factorialFunction = function(aNumber) {
+  var output = 1;
+  for(var i = 1; i <= aNumber; i++){
+    output = output*i;
+  }
+}
+//Finds x^y
+var exponentialFunction = function(x, y){
+  Math.pow(x,y);
+}
+//finds sin of a ratio
+var sinFunction = function(first){
+  return Math.sin(first);
+}
+//Finds cos of a ratio
+var cosFunction = function(first){
+  return Math.cos(first);
+}
+//Finds tangent of ratio
+var tanFunction = function(first){
+  return Math.tan(first);
+}
+//Finds percentage of second to first
+var percentFunction = function(first, second){
+  return (second/first)*100;
+}
+//Converts degrees to radians
+var radFunction = function(first){
+  return Math.radians(first);
+}
+var add = function(first,second){
+  return first + second;
+}
+var subtract = function(first,second){
+  return first - second;
+}
+var multiply = function(first,second){
+  return first*second;
+}
+var divide = function(first,second){
+  return first/second;
+}
