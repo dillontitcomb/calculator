@@ -24,12 +24,14 @@ var switchToSecond = function() {
     firstInProgress = false;
     first = parseFloat(buffer);
     buffer = "";
+    $("#numberone").append("<em>" + first + "</em>");
   }
 }
 var calculateTwoValueResult = function() {
   second = parseFloat(buffer);
   buffer = "";
   firstInProgress = true;
+  $("#numbertwo").append("<em>" + second + "</em>");
   return selectorFunction(selector);
   first = 0;
   second = 0;
@@ -133,9 +135,8 @@ $(function(){
       selector = 9;
     });
     $("#AC").click(function(){
-      first = null;
-      second = null;
-      buffer = "";
+      location.reload();
+
     });
     $("#equal").click(function() {
       var result = calculateTwoValueResult();
