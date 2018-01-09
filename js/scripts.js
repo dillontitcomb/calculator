@@ -10,7 +10,6 @@ var firstInProgress = true;
 //appending button pressed to buffer
 var appendBuffer = function(appendedNum) {
   buffer+=appendedNum;
-  console.log(buffer);
 }
 //appending button pressed to bufferSecond
 // var appendSecond = function(addMeTo) {
@@ -140,7 +139,7 @@ $(function(){
     });
     $("#equal").click(function() {
       var result = calculateTwoValueResult();
-      alert(result);
+      $("#resultheader").append("<em>" + result + "</em>");
     });
 });
 //Finds the factorial of an integer
